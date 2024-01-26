@@ -15,7 +15,7 @@ public class Main {
     }
 
     static void run() {
-        if(auth()) {
+        if (auth()) {
             registerNewClient();
         }
     }
@@ -26,7 +26,7 @@ public class Main {
             System.out.print("Password: ");
             String input = SCANNER.nextLine();
 
-            if(PASSWORD.equals(input)) {
+            if (PASSWORD.equals(input)) {
                 accepted = true;
                 break;
             } else {
@@ -44,7 +44,7 @@ public class Main {
         System.out.print("Email: ");
         String email = SCANNER.nextLine();
 
-        if(isEmailValid(email)) {
+        if (isEmailValid(email)) {
             Client client = buildClient(email);
             System.out.println("New client: " + client.firstName + " " + client.lastName + " (" + client.email + ").");
         } else {
