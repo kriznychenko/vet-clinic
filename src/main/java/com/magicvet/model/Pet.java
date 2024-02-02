@@ -2,7 +2,7 @@ package main.java.com.magicvet.model;
 
 import java.util.Objects;
 
-public class Pet {
+public abstract class Pet {
     private String type;
     private String sex;
     private String age;
@@ -51,7 +51,7 @@ public class Pet {
 
     @Override
     public String toString() {
-        return "\n\ttype = " + type +
+        return "\ttype = " + type +
                 ", sex = " + sex +
                 ", age = " + age +
                 ", pet name = " + name +
