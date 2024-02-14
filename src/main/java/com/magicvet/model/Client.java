@@ -2,6 +2,8 @@ package main.java.com.magicvet.model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Client {
@@ -9,7 +11,7 @@ public class Client {
     private String firstName;
     private String lastName;
     private String email;
-    private Pet pet;
+    private List<Pet> pets = new ArrayList<>();
     private final LocalDateTime registrationDate = LocalDateTime.now();
 
     @Override
@@ -19,7 +21,7 @@ public class Client {
                 ", lastName = " + lastName +
                 ", email = " + email +
                 ", registration date = " + registrationDate.format(FORMATTER) +
-                "\n\tPet: " + pet +
+                "\n\tPets: " + pets +
                 "\n}";
     }
 
@@ -31,12 +33,12 @@ public class Client {
         return Objects.equals(firstName, client.firstName)
                 && Objects.equals(lastName, client.lastName)
                 && Objects.equals(email, client.email)
-                && Objects.equals(pet, client.pet);
+                && Objects.equals(pets, client.pets);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, email, pet);
+        return Objects.hash(firstName, lastName, email, pets);
     }
 
     public String getFirstName() {
@@ -63,11 +65,15 @@ public class Client {
         this.email = email;
     }
 
-    public Pet getPet() {
-        return pet;
+    public List<Pet> getPets() {
+        return pets;
     }
 
-    public void setPet(Pet pet) {
-        this.pet = pet;
+    public void setPet(List<Pet> pets) {
+        this.pets = pets;
+    }
+
+    public void addPet(Pet pet) {
+        pets.add(pet);
     }
 }
