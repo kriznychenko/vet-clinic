@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public abstract class Pet {
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
+    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
     private String type;
     private String sex;
     private String age;
@@ -53,14 +53,19 @@ public abstract class Pet {
         this.ownerName = ownerName;
     }
 
-    @Override
+    public LocalDateTime getRegistrationDate() {
+        return registrationDate;
+    }
+
     public String toString() {
-        return "\ttype = " + type +
-                ", sex = " + sex +
-                ", age = " + age +
-                ", pet name = " + name +
-                ", owner name = " + ownerName +
-                ", registration date = " + registrationDate.format(FORMATTER);
+        return "Pet {"
+                + "type = " + type
+                + ", sex = " + sex
+                + ", age = " + age
+                + ", name = " + name
+                + ", ownerName = " + ownerName
+                + ", registrationDate = " + registrationDate.format(FORMATTER)
+                + "}";
     }
 
     @Override

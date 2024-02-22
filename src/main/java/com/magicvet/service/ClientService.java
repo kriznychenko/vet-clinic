@@ -7,7 +7,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ClientService {
-
     private static final String EMAIL_PATTERN = "^[a-zA-Z0-9._%+_]+@[a-zA-Z0-9.-]+\\.[a-zA-Z0-9]{2,}$";
 
     public Client registerNewClient() {
@@ -38,6 +37,10 @@ public class ClientService {
 
         System.out.print("Last name: ");
         client.setLastName(Main.SCANNER.nextLine());
+
+        System.out.print("Location: ");
+        String location = Main.SCANNER.nextLine();
+        client.setLocation(Client.Location.valueOf(location));
 
         return client;
     }
