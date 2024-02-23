@@ -2,6 +2,7 @@ package main.java.com.magicvet.service;
 
 import main.java.com.magicvet.Main;
 import main.java.com.magicvet.model.Cat;
+import main.java.com.magicvet.model.Client;
 import main.java.com.magicvet.model.Dog;
 import main.java.com.magicvet.model.Pet;
 
@@ -15,7 +16,7 @@ public class PetService {
         System.out.print("Type (dog / cat): ");
         String type = Main.SCANNER.nextLine();
 
-        if(type.equals(DOG_TYPE) || type.equals(CAT_TYPE)) {
+        if (type.equals(DOG_TYPE) || type.equals(CAT_TYPE)) {
             pet = buildPet(type);
         } else {
             System.out.println("Unknown pet type " + type);
@@ -39,8 +40,16 @@ public class PetService {
 
         if (type.equals(DOG_TYPE)) {
             System.out.print("Size (XS/ S / M / L / XL): ");
-            String size = Main.SCANNER.nextLine();
-            ((Dog) pet).setSize(Dog.Size.valueOf(size));
+            Dog.Size size;
+            String sizeInput = Main.SCANNER.nextLine();
+            try {
+                size = Dog.Size.valueOf(sizeInput);
+            } catch (IllegalArgumentException e) {
+                size = Dog.Size.UNKNOWN;
+                System.out.println("Unable to parse value '" + sizeInput
+                        + "'. Using default value: " + Client.Location.UNKNOWN);
+            }
+            ((Dog) pet).setSize(size);
         }
 
         return pet;
